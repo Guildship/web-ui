@@ -87,6 +87,8 @@ module Reaction = {
     user: User.t,
     symbol: ReactionSymbol.t,
   };
+
+  type make = (User.t, string) => Result.t(t, string);
 };
 
 module GuildRole = {
@@ -94,6 +96,8 @@ module GuildRole = {
     id: GuildshipId.t,
     name: String50.t,
   };
+
+  type make = (User.t, string) => Result.t(t, string);
 };
 
 module ForumThreadReply = {
@@ -103,6 +107,8 @@ module ForumThreadReply = {
     body: string,
     reactions: list(Reaction.t),
   };
+
+  type make = (User.t, string) => Result.t(t, string);
 };
 
 module ForumThread = {
@@ -113,7 +119,7 @@ module ForumThread = {
     replies: list(ForumThreadReply.t),
   };
 
-  type make = (~title: string, ~body: string) => Result.t(t, string);
+  type make = (User.t, ~title: string, ~body: string) => Result.t(t, string);
 };
 
 module ForumCategory = {
@@ -123,7 +129,7 @@ module ForumCategory = {
     threads: list(ForumThread.t),
   };
 
-  type make = string => Result.t(t, string);
+  type make = (User.t, string) => Result.t(t, string);
 };
 
 module Forum = {
@@ -144,6 +150,8 @@ module CalendarEvent = {
     duration: CalendarEventDateTime.t,
     reactions: list(Reaction.t),
   };
+
+  type make = (User.t, ~title: string) => Result.t(t, string);
 };
 
 module Calendar = {
@@ -159,7 +167,7 @@ module BlogPost = {
     reactions: list(Reaction.t),
   };
 
-  type make = (~title: string, ~body: string) => Result.t(t, string);
+  type make = (User.t, ~title: string, ~body: string) => Result.t(t, string);
 };
 
 module Blog = {
@@ -178,5 +186,5 @@ module Guild = {
     blog: Blog.t,
   };
 
-  type make = string => Result.t(t, string);
+  type make = (User.t, string) => Result.t(t, string);
 };
