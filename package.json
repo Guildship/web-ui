@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.8",
-    "bs-platform": "^4.0.18",
+    "bs-platform": "next",
     "bsb-js": "^1.1.7",
     "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.0",
