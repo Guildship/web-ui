@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Guildship</title>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Guildship</title>
-</head>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", sans-serif;
+      }
 
-<body>
-  <noscript>JavaScript is required to use this app.</noscript>
-  <div id="root"></div>
-  <script src="../src/index.re"></script>
-</body>
+      body,
+      #root {
+        min-height: 100vh;
+      }
 
+      #root {
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>JavaScript is required to use this app.</noscript>
+    <div id="root"></div>
+    <script src="../src/index.re"></script>
+  </body>
 </html>

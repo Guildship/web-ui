@@ -1553,10 +1553,10 @@ bs-css@^8.0.2:
   dependencies:
     emotion "^9.2.12"
 
-bs-platform@next:
-  version "6.0.0-dev.1"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-6.0.0-dev.1.tgz#125a7858ef2f1aa131ee9c2df243d9224825d9bc"
-  integrity sha512-1E1G6xEovnWdiQVt0TyS8Z4F+3hJTxMZBKcSHJ9Yf+xMNQgA/BR5HV3IgI8BkPc+dntifiu7JS9yrbws5qksNA==
+bs-platform@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.0.tgz#f9fded818bafc3891aeb85eb4e0d95b8d8f8b4d7"
+  integrity sha512-zxLobdIaf/r7go47hOgxcd6C0ANh7MYMEtZNb9Al7JdoekzFZI50F4GpZpP8kMh9Z+M5PoPE1WuryT4S8mT8Kg==
 
 bsb-js@^1.1.7:
   version "1.1.7"
