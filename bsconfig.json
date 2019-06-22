@@ -5,6 +5,11 @@
   },
   "sources": [
     {
+      "dir": "stories",
+      "subdirs": true,
+      "type": "dev"
+    },
+    {
       "dir": "src",
       "subdirs": true
     },

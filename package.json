@@ -9,7 +9,9 @@
     "bsb:clean": "yarn bsb -clean-world",
     "bsb:make": "yarn bsb -make-world",
     "test": "echo \"lol\" && exit 1",
-    "clean": "rimraf dist lib/* .cache .merlin"
+    "clean": "rimraf dist lib/* .cache .merlin",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "license": "EUPL-1.2",
   "dependencies": {
@@ -19,7 +21,13 @@
     "reason-react": ">= 0.7.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
     "@glennsl/bs-jest": "^0.4.8",
+    "@storybook/addon-actions": "^5.1.9",
+    "@storybook/addon-links": "^5.1.9",
+    "@storybook/addons": "^5.1.9",
+    "@storybook/react": "^5.1.9",
+    "babel-loader": "^8.0.6",
     "bs-platform": "5.0.4",
     "bsb-js": "^1.1.7",
     "parcel-bundler": "^1.12.3",
