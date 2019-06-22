@@ -1,4 +1,4 @@
-open Utils.React;
+open ReactUtils;
 
 module Styles = {
   open Css;
