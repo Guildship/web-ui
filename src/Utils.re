@@ -1,3 +1,5 @@
 include Belt;
 
-let toReactString = ReasonReact.string;
+module React = {
+  let str = React.string;
+};
