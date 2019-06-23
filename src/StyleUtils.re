@@ -1,3 +1,5 @@
+include Ux;
+
 module ModularScale = {
   type t = (float, float, float, float, float, float, float, float);
 

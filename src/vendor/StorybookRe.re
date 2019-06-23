@@ -7,4 +7,4 @@ type chapter = unit => React.element;
 [@bs.val] [@bs.module "@storybook/react"]
 external storiesOf: (string, storybookModule) => section = "";
 
-[@bs.send] external add: (section, string, chapter) => unit = "add";
+[@bs.send] external add: (section, string, chapter) => section = "add";
