@@ -56,25 +56,52 @@ module Color = {
 
 module ModularScale = {
   type t =
-    | Number(int)
     | MinorSecond
-    | MajorThird;
+    | MajorSecond
+    | MinorThird
+    | MajorThird
+    | PerfectFourth
+    | AugFourth
+    | PerfectFifth
+    | MinorSixth
+    | GoldenSection
+    | MajorSixth
+    | MinorSeventh
+    | MajorSeventh
+    | Octave
+    | MajorTenth
+    | MajorEleventh
+    | MajorTwelfth
+    | DoubleOctave
+    | Number(int);
 
   let toString =
     fun
     | MinorSecond => "minorSecond"
+    | MajorSecond => "majorSecond"
+    | MinorThird => "minorThird"
     | MajorThird => "majorThird"
+    | PerfectFourth => "perfectFourth"
+    | AugFourth => "augFourth"
+    | PerfectFifth => "perfectFifth"
+    | MinorSixth => "minorSixth"
+    | GoldenSection => "goldenSection"
+    | MajorSixth => "majorSixth"
+    | MinorSeventh => "minorSeventh"
+    | MajorSeventh => "majorSeventh"
+    | Octave => "octave"
+    | MajorTenth => "majorTenth"
+    | MajorEleventh => "majorEleventh"
+    | MajorTwelfth => "majorTwelfth"
+    | DoubleOctave => "doubleOctave"
     | Number(n) => n->string_of_int;
 
-  let modularScale = (steps, base, ratio) =>
+  let modularScale = (~steps, ~base, ~ratio) =>
     switch (steps, base, ratio) {
     | (steps, base, Number(n)) => PolishedRe.modularScale(steps, base, n)
     | (steps, base, ratio) =>
       PolishedRe.modularScale(steps, base, ratio->toString)
     };
 
-  let modularScale = (steps, base, ratio) =>
-    modularScale(steps, base, ratio);
-
-  let get = n => modularScale(n, "1rem", MajorThird);
+  let get = n => modularScale(~steps=n, ~base="1rem", ~ratio=MajorThird);
 };
