@@ -19,7 +19,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h1FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h1FontSize),
         fontWeight(`num(theme.typography.h1FontWeight)),
       ]),
     ]);
@@ -28,7 +28,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h2FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h2FontSize),
         fontWeight(`num(theme.typography.h2FontWeight)),
       ]),
     ]);
@@ -37,7 +37,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h3FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h3FontSize),
         fontWeight(`num(theme.typography.h3FontWeight)),
       ]),
     ]);
@@ -46,7 +46,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h4FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h4FontSize),
         fontWeight(`num(theme.typography.h4FontWeight)),
       ]),
     ]);
@@ -55,7 +55,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h5FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h5FontSize),
         fontWeight(`num(theme.typography.h5FontWeight)),
       ]),
     ]);
@@ -64,7 +64,7 @@ module Styles = {
       heading,
       baseTypography,
       style([
-        fontSize(theme.typography.h6FontSize->pxFloat),
+        unsafe("font-size", theme.typography.h6FontSize),
         fontWeight(`num(theme.typography.h6FontWeight)),
       ]),
     ]);
@@ -74,7 +74,7 @@ module Styles = {
       baseTypography,
       style([
         lineHeight(theme.typography.baseLineHeight->em),
-        fontSize(theme.typography.baseFontSize->pxFloat),
+        unsafe("font-size", theme.typography.baseFontSize),
         fontWeight(`num(theme.typography.baseFontWeight)),
       ]),
     ]);
@@ -82,7 +82,7 @@ module Styles = {
     merge([
       style([
         color(theme.colors.baseLinkColor),
-        fontSize(theme.typography.baseFontSize->pxFloat),
+        unsafe("font-size", theme.typography.baseFontSize),
         fontWeight(`num(theme.typography.baseFontWeight)),
         visited([color(theme.colors.visitedLinkColor)]),
         active([color(theme.colors.activeLinkColor)]),

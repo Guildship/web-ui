@@ -140,15 +140,14 @@ module Palette = {
 module Theme = {
   module Typography = {
     type t = {
-      ms: ModularScale.t,
       // Font Size (in pixels)
-      baseFontSize: float,
-      h1FontSize: float,
-      h2FontSize: float,
-      h3FontSize: float,
-      h4FontSize: float,
-      h5FontSize: float,
-      h6FontSize: float,
+      baseFontSize: string,
+      h1FontSize: string,
+      h2FontSize: string,
+      h3FontSize: string,
+      h4FontSize: string,
+      h5FontSize: string,
+      h6FontSize: string,
       // Font Weight
       baseFontWeight: int,
       h1FontWeight: int,
@@ -186,19 +185,14 @@ module Theme = {
 
   let baseFontSize = 18;
 
-  let majorSecondScale = ModularScale.make(baseFontSize, 1.125);
-  let majorThirdScale = ModularScale.make(baseFontSize, 1.25);
-  let modularScale = majorSecondScale;
-
   let typography: Typography.t = {
-    ms: modularScale,
-    baseFontSize: ModularScale.(modularScale->n1),
-    h1FontSize: ModularScale.(modularScale->n7),
-    h2FontSize: ModularScale.(modularScale->n6),
-    h3FontSize: ModularScale.(modularScale->n5),
-    h4FontSize: ModularScale.(modularScale->n4),
-    h5FontSize: ModularScale.(modularScale->n3),
-    h6FontSize: ModularScale.(modularScale->n2),
+    baseFontSize: ModularScale.get(1),
+    h1FontSize: ModularScale.get(7),
+    h2FontSize: ModularScale.get(6),
+    h3FontSize: ModularScale.get(5),
+    h4FontSize: ModularScale.get(4),
+    h5FontSize: ModularScale.get(3),
+    h6FontSize: ModularScale.get(2),
     baseFontWeight: 400,
     h1FontWeight: 900,
     h2FontWeight: 300,
