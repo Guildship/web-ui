@@ -15,13 +15,12 @@
   },
   "license": "EUPL-1.2",
   "dependencies": {
-    "@apollo/react-hooks": "^0.1.0-beta.10",
+    "apollo-client": "^2.6.3",
     "bs-css": "^8.0.4",
     "polished": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "reason-apollo": "^0.16.4",
-    "reason-apollo-hooks": "^2.0.1",
+    "reason-apollo": "0.16.4",
     "reason-react": ">= 0.7.0"
   },
   "devDependencies": {
