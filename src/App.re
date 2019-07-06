@@ -90,6 +90,21 @@ module Styles = {
     ]);
 };
 
+module GetGuilds = [%graphql
+  {|
+  query guilds(first: 10) {
+    edges {
+      node {
+        id
+        displayName
+      }
+    }
+  }
+|}
+];
+
+let query = GetGuilds.make()##query;
+
 [@react.component]
 let make = () => {
   <main className=Styles.appContainer>
