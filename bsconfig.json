@@ -26,8 +26,9 @@
     "reason-react",
     "bs-css",
     "@glennsl/bs-jest",
-    "reason-urql"
+    "reason-apollo-hooks",
+    "reason-apollo"
   ],
-  "ppx-flags": ["graphql_ppx/ppx\\ -schema=graphql_schema.json"],
+  "ppx-flags": ["graphql_ppx/ppx"],
   "refmt": 3
 }

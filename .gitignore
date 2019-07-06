@@ -7,3 +7,5 @@ npm-debug.log
 *.bs.js
 /dist
 /.cache
+.graphql_ppx_cache
+.env.*.local

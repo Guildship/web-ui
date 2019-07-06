@@ -15,12 +15,14 @@
   },
   "license": "EUPL-1.2",
   "dependencies": {
+    "@apollo/react-hooks": "^0.1.0-beta.10",
     "bs-css": "^8.0.4",
     "polished": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "reason-react": ">= 0.7.0",
-    "reason-urql": "^1.0.0-beta"
+    "reason-apollo": "^0.16.4",
+    "reason-apollo-hooks": "^2.0.1",
+    "reason-react": ">= 0.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
