@@ -1,4 +1,11 @@
-let inMemoryCache = ApolloInMemoryCache.createInMemoryCache();
-let httpLink = ApolloLinks.createHttpLink(~uri=Env.gsCorePath ++ "/api", ());
-let client =
-  ReasonApollo.createApolloClient(~link=httpLink, ~cache=inMemoryCache, ());
+open GraphqlHooks;
+include GraphqlHooksTypes;
+
+module Provider = Provider;
+
+let gqlEndpoint = Env.gsCorePath ++ "/api";
+
+let memCache = Memcache.make();
+let client = Client.make(~url=gqlEndpoint, ~cache=memCache, ());
+
+module Query = GraphqlHooksQuery.Make;
