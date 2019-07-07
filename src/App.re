@@ -27,10 +27,10 @@ module Styles = {
 
 [@react.component]
 let make = () => {
-  <ReasonApollo.Provider client=Gql.client>
+  <Gql.Provider client=Gql.client>
     <main className=Styles.appContainer>
       <h1 className=Styles.h1> "Guildship"->str </h1>
       <ShowGuilds />
     </main>
-  </ReasonApollo.Provider>;
+  </Gql.Provider>;
 };

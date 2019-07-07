@@ -1460,6 +1460,11 @@
     react-lifecycles-compat "^3.0.4"
     warning "^3.0.0"
 
+"@sindresorhus/fnv1a@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/fnv1a/-/fnv1a-1.2.0.tgz#d554da64c406f3b62ad06dfce9efd537a4a55de4"
+  integrity sha512-5ezb/dBSTWtKQ4sLQwMgOJyREXJcZZkTMbendMwKrXTghUhWjZhstzkkmt4/WkFy/GSTSGzfJOKU7dEXv3C/XQ==
+
 "@storybook/addon-actions@^5.1.9":
   version "5.1.9"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.1.9.tgz#a515b62b109cb886ccd75ef2f5b12f8c27b43dd3"
@@ -3344,6 +3349,11 @@ bs-css@^8.0.4:
   dependencies:
     emotion "^9.2.12"
 
+bs-fetch@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/bs-fetch/-/bs-fetch-0.5.0.tgz#6913b1d1ddfa0b0a4b832357854e9763d61d4b28"
+  integrity sha512-cGjwRpyNcIaX+p2ssy/38zs7BM/miKNgmOR3NEhxKFete5mR05JcvjuV4raG89oGCG281SU1b56TTAKmf9VCug==
+
 bs-platform@5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-5.0.4.tgz#d406ef43c12d1b19d8546884d8b5b4e0fb709372"
@@ -5001,6 +5011,11 @@ extract-files@^4.0.0:
   resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-4.1.0.tgz#2d5b64af688dfd030274ca542c43fabba325019a"
   integrity sha512-2gjdb3dVzr1ie9+K8pupPTnsNkK4qmzbTFOIxghiWoh6nCTajGCGC72ZNYX0nBWy5IOq1FXfRVgvkkLqqE4sdw==
 
+extract-files@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/extract-files/-/extract-files-5.0.1.tgz#c9492a8410be643e260a376f0151361993d5f659"
+  integrity sha512-qRW6y9eKF0VbCyOoOEtFhzJ3uykAw8GKwQVXyAIqwocyEWW4m+v+evec34RwtUkkxxHh7NKBLJ6AnXM8W4dH5w==
+
 extsprintf@1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
@@ -5528,6 +5543,21 @@ grapheme-breaker@^0.3.2:
   dependencies:
     brfs "^1.2.0"
     unicode-trie "^0.3.1"
+
+graphql-hooks-memcache@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/graphql-hooks-memcache/-/graphql-hooks-memcache-1.2.1.tgz#2d8ad176d8e8170d6a2e9f5650a58318af781e8a"
+  integrity sha512-1O09yn9UFjq40ceFYL1DLUImUimUxkzCJIamF1MQFX5+o4ZUH/zqNjqZWfbTwHfi9YktvnWiEPKBVXLkXXpPmw==
+  dependencies:
+    "@sindresorhus/fnv1a" "^1.2.0"
+    tiny-lru "^6.0.1"
+
+graphql-hooks@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/graphql-hooks/-/graphql-hooks-3.6.0.tgz#a3dc28d25ffd39ea0282d73e9d73d6e98c7e19c4"
+  integrity sha512-POTpY4Y7rniXtd1lAnii8BRtmKRHlz1VS6J7es+z+oSRCR7usz+VxJl1t7lYhDt9FJOhU9ZWPEVPhCYLK6MCGQ==
+  dependencies:
+    extract-files "^5.0.1"
 
 graphql-tag@2.10.0:
   version "2.10.0"
@@ -9430,6 +9460,14 @@ reason-apollo@0.16.4:
     react-apollo "2.3.2"
     subscriptions-transport-ws "^0.9.16"
 
+reason-graphql-hooks@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/reason-graphql-hooks/-/reason-graphql-hooks-0.2.1.tgz#652fc7c50d08e3c00f0d37a42f0c9fe7c89faa97"
+  integrity sha512-/iWu3qf4mB/wujE54e0cP89poCjFohvgV4HZd8frKPuSzSVA37RKN37ryX0Fec62y//gm7TufguUR+IxE72tHw==
+  dependencies:
+    graphql-hooks "^3.6.0"
+    graphql-hooks-memcache "^1.2.1"
+
 "reason-react@>= 0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.7.0.tgz#46a975c321e81cd51310d7b1a02418ca7667b0d6"
@@ -10682,6 +10720,11 @@ tiny-inflate@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/tiny-inflate/-/tiny-inflate-1.0.2.tgz#93d9decffc8805bd57eae4310f0b745e9b6fb3a7"
   integrity sha1-k9nez/yIBb1X6uQxDwt0Xptvs6c=
+
+tiny-lru@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-6.0.1.tgz#558bd6b7232b8b9dfa482147539676fdd75a3a07"
+  integrity sha512-k/vdHz+bFALjmik0URLWBYNuO0hCABTL5dullbZBXvFDdlL8RrKaeLR6YuHfX+6ZXOLkHw+HpNLCUA7DtLMQmg==
 
 tmp@^0.0.33:
   version "0.0.33"

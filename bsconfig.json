@@ -26,7 +26,8 @@
     "reason-react",
     "bs-css",
     "@glennsl/bs-jest",
-    "reason-apollo"
+    "reason-graphql-hooks",
+    "bs-fetch"
   ],
   "ppx-flags": ["graphql_ppx/ppx"],
   "refmt": 3

@@ -4,7 +4,7 @@
   "staticPath": "public",
   "scripts": {
     "build:fresh": "yarn clean && yarn build",
-    "build": "yarn parcel build src/index.html --public-url / --detailed-report",
+    "build": "yarn parcel build src/index.html --public-url / --detailed-report --experimental-scope-hoisting",
     "start": "yarn parcel src/index.html --public-url / --open --port 3000",
     "bsb:clean": "yarn bsb -clean-world",
     "bsb:make": "yarn bsb -make-world",
@@ -15,16 +15,12 @@
   },
   "license": "EUPL-1.2",
   "dependencies": {
-    "apollo-cache-inmemory": "^1.6.2",
-    "apollo-client": "^2.6.3",
-    "apollo-link-http": "^1.5.15",
     "bs-css": "^8.0.4",
-    "graphql": "^14.4.2",
+    "bs-fetch": "^0.5.0",
     "polished": "^3.4.1",
     "react": "^16.8.6",
-    "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
-    "reason-apollo": "0.16.4",
+    "reason-graphql-hooks": "^0.2.1",
     "reason-react": ">= 0.7.0"
   },
   "devDependencies": {
