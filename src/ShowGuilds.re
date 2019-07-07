@@ -43,14 +43,28 @@ let getGuilds = res =>
 
 [@react.component]
 let make = () => {
-  let ({response}, _) = GuildsQuery.use();
-  switch (response) {
-  | Data(data) =>
-    data
-    ->getGuilds
-    ->Array.map(({id, displayName}) => <div key=id> displayName->str </div>)
-    ->array
-  | NoData => "No data!"->str
-  | _ => null
-  };
+  let ({loading, response, data}, _refetch) = GuildsQuery.use();
+  let _ = inspect2((loading, response, data), "(loading, response, data)");
+  <div>
+    {switch (response) {
+     | Error(err) =>
+       switch (err) {
+       | GraphQLErrors(e) =>
+         e->Array.map(gqlErr => gqlErr##message)->Array.reduce("", (++))->str
+       | _ => "HTTP or Fetch error"->str
+       }
+     | NoData => "No data!"->str
+     | Loading => "Loading..."->str
+     | Data(data) =>
+       switch (data->getGuilds) {
+       | [||] => "No guilds!"->str
+       | guilds =>
+         guilds
+         ->Array.map(({id, displayName}) =>
+             <div key=id> displayName->str </div>
+           )
+         ->array
+       }
+     }}
+  </div>;
 };
