@@ -27,7 +27,8 @@
     "bs-css",
     "@glennsl/bs-jest",
     "reason-graphql-hooks",
-    "bs-fetch"
+    "bs-fetch",
+    "bs-storybook"
   ],
   "ppx-flags": ["graphql_ppx/ppx"],
   "refmt": 3

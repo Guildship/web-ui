@@ -47,14 +47,6 @@ let make = () => {
   let _ = inspect2((loading, response, data), "(loading, response, data)");
   <div>
     {switch (response) {
-     | Error(err) =>
-       switch (err) {
-       | GraphQLErrors(e) =>
-         e->Array.map(gqlErr => gqlErr##message)->Array.reduce("", (++))->str
-       | _ => "HTTP or Fetch error"->str
-       }
-     | NoData => "No data!"->str
-     | Loading => "Loading..."->str
      | Data(data) =>
        switch (data->getGuilds) {
        | [||] => "No guilds!"->str
@@ -65,6 +57,7 @@ let make = () => {
            )
          ->array
        }
+     | _ => null
      }}
   </div>;
 };
