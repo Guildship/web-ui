@@ -18,3 +18,10 @@ let inspect2 = (t, label) => {
   Js.log2(label, t);
   t;
 };
+
+module OptionUtils = {
+  let none = f => {
+    f();
+    None;
+  };
+};

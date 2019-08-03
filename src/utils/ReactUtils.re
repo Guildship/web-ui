@@ -23,7 +23,9 @@ module Hooks = {
       open Dom.Storage;
       open AppStyles.ThemeNames;
       open AppStyles.Theme;
+
       let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
       let (themeName, setThemeName) =
         useState(() =>
           Option.(
@@ -43,6 +45,14 @@ module Hooks = {
         | Light => lightTheme
         | Dark => darkTheme
         };
+
+      useEffect1(
+        () => {
+          set(prefersDarkMode ? Dark : Light);
+          None;
+        },
+        [|prefersDarkMode|],
+      );
 
       {theme, themeName, setTheme: set};
     };
