@@ -25,3 +25,8 @@ module OptionUtils = {
     None;
   };
 };
+
+module FunctionUtils = {
+  let flip = (f, a, b) => f(b, a);
+  let flip3 = (f, a, b, c) => f(b, c, a);
+};

@@ -10,7 +10,37 @@ module Hooks = {
     setTheme: AppStyles.ThemeNames.t => unit,
   };
 
-  let useTheme = () =>
+  let useAutoTheme = (default: bool) => {
+    open Dom.Storage;
+    open FunctionUtils;
+
+    let getItem = flip(getItem);
+    let setItem = flip3(setItem);
+
+    let storedState = localStorage->getItem("autoTheme");
+
+    let (state, setState) =
+      useState(() => {
+        localStorage->setItem("autoTheme", default->string_of_bool);
+
+        switch (storedState) {
+        | Some("true") => true
+        | Some("false") => false
+        | _ => default
+        };
+      });
+
+    let set = v => {
+      setState(_ => {
+        localStorage->setItem("autoTheme", v->string_of_bool);
+        v;
+      });
+    };
+
+    (state, set);
+  };
+
+  let useTheme = (~auto) =>
     /**
     What we want to do is the following:
     First and foremost the theme is whatever the user sets it to
@@ -25,19 +55,30 @@ module Hooks = {
       open AppStyles.Theme;
 
       let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+      let systemTheme = prefersDarkMode ? Dark : Light;
+
+      let storedTheme =
+        switch (auto) {
+        | false => localStorage |> getItem("theme")
+        | _ => None
+        };
 
       let (themeName, setThemeName) =
         useState(() =>
           Option.(
-            (localStorage |> getItem("theme"))
-            ->flatMap(fromString)
-            ->getWithDefault(prefersDarkMode ? Dark : Light)
+            storedTheme->flatMap(fromString)->getWithDefault(systemTheme)
           )
         );
 
       let set = t => {
-        setThemeName(_ => t);
-        localStorage |> setItem("theme", t->toString);
+        switch (auto) {
+        | false =>
+          setThemeName(_ => {
+            localStorage |> setItem("theme", t->toString);
+            t;
+          })
+        | _ => ()
+        };
       };
 
       let theme =
@@ -46,12 +87,15 @@ module Hooks = {
         | Dark => darkTheme
         };
 
-      useEffect1(
+      useEffect2(
         () => {
-          set(prefersDarkMode ? Dark : Light);
+          switch (storedTheme) {
+          | None => set(systemTheme)
+          | _ => ()
+          };
           None;
         },
-        [|prefersDarkMode|],
+        (storedTheme, prefersDarkMode),
       );
 
       {theme, themeName, setTheme: set};
