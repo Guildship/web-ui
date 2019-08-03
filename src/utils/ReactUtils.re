@@ -4,6 +4,11 @@ let useOnMount = fn => useEffect1(fn, [||]);
 
 module Hooks = {
   open Utils;
+  type useThemeReturnType = {
+    theme: AppStyles.Theme.t,
+    themeName: AppStyles.ThemeNames.t,
+    setTheme: AppStyles.ThemeNames.t => unit,
+  };
 
   let useTheme = () =>
     /**
@@ -17,8 +22,9 @@ module Hooks = {
       open ReactResponsiveRe;
       open Dom.Storage;
       open AppStyles.ThemeNames;
+      open AppStyles.Theme;
       let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-      let (theme, setTheme) =
+      let (themeName, setThemeName) =
         useState(() =>
           Option.(
             (localStorage |> getItem("theme"))
@@ -28,10 +34,16 @@ module Hooks = {
         );
 
       let set = t => {
-        setTheme(_ => t);
+        setThemeName(_ => t);
         localStorage |> setItem("theme", t->toString);
       };
 
-      (theme, set);
+      let theme =
+        switch (themeName) {
+        | Light => lightTheme
+        | Dark => darkTheme
+        };
+
+      {theme, themeName, setTheme: set};
     };
 };
