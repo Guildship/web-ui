@@ -50,7 +50,9 @@ let make = () => {
       <main className=Styles.appContainer>
         <h1 className=Styles.h1> "Guildship"->str </h1>
         <h2> {themeName->ThemeNames.toString->str} </h2>
-        <button onClick={_ => toggleTheme()}> "Toggle theme"->str </button>
+        <button disabled=autoTheme onClick={_ => toggleTheme()}>
+          "Toggle theme"->str
+        </button>
         <button onClick={_ => toggleAutoTheme()}>
           {("Auto theme " ++ (autoTheme ? "enabled" : "disabled"))->str}
         </button>

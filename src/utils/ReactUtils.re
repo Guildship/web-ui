@@ -21,7 +21,10 @@ module Hooks = {
 
     let (state, setState) =
       useState(() => {
-        localStorage->setItem("autoTheme", default->string_of_bool);
+        switch (storedState) {
+        | None => localStorage->setItem("autoTheme", default->string_of_bool)
+        | _ => ()
+        };
 
         switch (storedState) {
         | Some("true") => true
@@ -70,6 +73,10 @@ module Hooks = {
           )
         );
 
+      /**
+        If auto is true then this function won't do anything.
+        Make auto false to be able to manually change the theme.
+       */
       let set = t => {
         switch (auto) {
         | false =>
@@ -87,15 +94,16 @@ module Hooks = {
         | Dark => darkTheme
         };
 
-      useEffect2(
+      useEffect3(
         () => {
-          switch (storedTheme) {
-          | None => set(systemTheme)
+          switch (auto, storedTheme) {
+          | (true, _) => setThemeName(_ => systemTheme)
+          | (_, None) => set(systemTheme)
           | _ => ()
           };
           None;
         },
-        (storedTheme, prefersDarkMode),
+        (auto, storedTheme, prefersDarkMode),
       );
 
       {theme, themeName, setTheme: set};
