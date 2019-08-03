@@ -231,6 +231,30 @@ module Theme = {
       activeLinkColor: Palette.gsRed5,
     },
   };
+};
 
-  let theme = darkTheme;
+module ThemeNames = {
+  type t =
+    | Light
+    | Dark;
+
+  let fromString =
+    fun
+    | "light" => Some(Light)
+    | "dark" => Some(Dark)
+    | _ => None;
+
+  let toString =
+    fun
+    | Light => "light"
+    | Dark => "dark";
+};
+
+module ThemeContext = {
+  let themeContext = React.createContext(ThemeNames.Light);
+  let makeProps = (~value, ~children, ()) => {
+    "value": value,
+    "children": children,
+  };
+  let make = React.Context.provider(themeContext);
 };
