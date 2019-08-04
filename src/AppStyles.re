@@ -251,7 +251,7 @@ module ThemeNames = {
 };
 
 module ThemeContext = {
-  let themeContext = React.createContext(ThemeNames.Light);
+  let themeContext = React.createContext(Theme.lightTheme);
   let makeProps = (~value, ~children, ()) => {
     "value": value,
     "children": children,

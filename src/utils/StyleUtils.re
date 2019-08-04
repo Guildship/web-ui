@@ -1,6 +1,11 @@
 include Ux;
 open PolishedRe;
 
+module CssUtils = {
+  let numFloat = (num: float) => `num(num);
+  let num = (num: int) => `num(num);
+};
+
 module Color = {
   [@bs.deriving abstract]
   type rgb = {

@@ -30,3 +30,9 @@ module FunctionUtils = {
   let flip = (f, a, b) => f(b, a);
   let flip3 = (f, a, b, c) => f(b, c, a);
 };
+
+module DomUtils = {
+  type matchMedia;
+  [@bs.val] external matchMedia: string => matchMedia = "window.matchMedia";
+  [@bs.get] external matches: matchMedia => bool = "matches";
+};

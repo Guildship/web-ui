@@ -1,21 +1,35 @@
 include React;
 let str = React.string;
-let useOnMount = fn => useEffect1(fn, [||]);
+let classNames = (array: array(string)) => Js.Array.joinWith(" ", array);
 
 module Hooks = {
   open Utils;
-  type useThemeReturnType = {
-    theme: AppStyles.Theme.t,
-    themeName: AppStyles.ThemeNames.t,
-    setTheme: AppStyles.ThemeNames.t => unit,
+
+  let useOnMount = fn => useEffect1(fn, [||]);
+
+  type useAutoTheme = {
+    autoTheme: bool,
+    setAutoTheme: bool => unit,
+    canUseAutoTheme: bool,
   };
 
   let useAutoTheme = (default: bool) => {
     open Dom.Storage;
     open FunctionUtils;
+    open DomUtils;
 
     let getItem = flip(getItem);
     let setItem = flip3(setItem);
+
+    let canAutoTheme = {
+      let supportsDark = matchMedia("(prefers-color-scheme: dark)")->matches;
+      let supportsLight =
+        matchMedia("(prefers-color-scheme: light)")->matches;
+      let supportsNoPreferences =
+        matchMedia("(prefers-color-scheme: no-preference)")->matches;
+
+      supportsDark || supportsLight || supportsNoPreferences;
+    };
 
     let storedState = localStorage->getItem("autoTheme");
 
@@ -40,7 +54,13 @@ module Hooks = {
       });
     };
 
-    (state, set);
+    {autoTheme: state, setAutoTheme: set, canUseAutoTheme: canAutoTheme};
+  };
+
+  type useTheme = {
+    theme: AppStyles.Theme.t,
+    themeName: AppStyles.ThemeNames.t,
+    set: AppStyles.ThemeNames.t => unit,
   };
 
   let useTheme = (~auto) =>
@@ -106,6 +126,6 @@ module Hooks = {
         (auto, storedTheme, prefersDarkMode),
       );
 
-      {theme, themeName, setTheme: set};
+      {theme, themeName, set};
     };
 };
