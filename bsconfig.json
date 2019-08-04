@@ -14,12 +14,10 @@
       "subdirs": true
     }
   ],
-  "package-specs": [
-    {
-      "module": "es6",
-      "in-source": true
-    }
-  ],
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
   "suffix": ".bs.js",
   "namespace": true,
   "bs-dependencies": [
@@ -30,6 +28,9 @@
     "bs-fetch",
     "bs-storybook"
   ],
+  "warnings": {
+    "error": "+101"
+  },
   "ppx-flags": ["graphql_ppx/ppx"],
   "refmt": 3
 }
