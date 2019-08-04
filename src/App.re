@@ -11,10 +11,12 @@ let make = () => {
 
   <ThemeContext value=theme>
     <Gql.Provider client=Gql.client>
-      {switch (url.path) {
-       | [] => <Pages.UnauthedHome />
-       | _ => null
-       }}
+      <Layouts.Global>
+        {switch (url.path) {
+         | [] => <Pages.UnauthedHome />
+         | _ => null
+         }}
+      </Layouts.Global>
     </Gql.Provider>
   </ThemeContext>;
 };

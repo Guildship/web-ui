@@ -8,14 +8,6 @@ let make = () => {
   module Styles = {
     open Css;
     open Theme;
-    open StyleUtils.CssUtils;
-
-    let appContainer =
-      style([
-        flex(1.0->numFloat),
-        backgroundColor(theme.colors.baseBackgroundColor),
-        color(theme.colors.baseForegroundColor),
-      ]);
 
     let heading =
       style([lineHeight(theme.typography.headingLineHeight->em)]);
@@ -32,7 +24,5 @@ let make = () => {
       ]);
   };
 
-  <main className=Styles.appContainer>
-    <h1 className=Styles.h1> "Guildship"->str </h1>
-  </main>;
+  <h1 className=Styles.h1> "Guildship"->str </h1>;
 };
