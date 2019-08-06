@@ -88,11 +88,6 @@ module Hooks = {
 
       useEffect3(
         () => {
-          Js.log((
-            themeName->toString,
-            storedTheme->Option.getExn,
-            systemTheme->toString,
-          ));
           switch (themeName, storedTheme, systemTheme) {
           | (Auto, _, Light) => dispatch(AutoSwitchToLight)
           | (Auto, _, Dark) => dispatch(AutoSwitchToDark)
