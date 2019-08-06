@@ -7,63 +7,7 @@ module Hooks = {
 
   let useOnMount = fn => useEffect1(fn, [||]);
 
-  type useAutoTheme = {
-    autoTheme: bool,
-    setAutoTheme: bool => unit,
-    canUseAutoTheme: bool,
-  };
-
-  let useAutoTheme = (default: bool) => {
-    open Dom.Storage;
-    open FunctionUtils;
-    open DomUtils;
-
-    let getItem = flip(getItem);
-    let setItem = flip3(setItem);
-
-    let canAutoTheme = {
-      let supportsDark = matchMedia("(prefers-color-scheme: dark)")->matches;
-      let supportsLight =
-        matchMedia("(prefers-color-scheme: light)")->matches;
-      let supportsNoPreferences =
-        matchMedia("(prefers-color-scheme: no-preference)")->matches;
-
-      supportsDark || supportsLight || supportsNoPreferences;
-    };
-
-    let storedState = localStorage->getItem("autoTheme");
-
-    let (state, setState) =
-      useState(() => {
-        switch (storedState) {
-        | None => localStorage->setItem("autoTheme", default->string_of_bool)
-        | _ => ()
-        };
-
-        switch (storedState) {
-        | Some("true") => true
-        | Some("false") => false
-        | _ => default
-        };
-      });
-
-    let set = v => {
-      setState(_ => {
-        localStorage->setItem("autoTheme", v->string_of_bool);
-        v;
-      });
-    };
-
-    {autoTheme: state, setAutoTheme: set, canUseAutoTheme: canAutoTheme};
-  };
-
-  type useTheme = {
-    theme: AppStyles.Theme.t,
-    themeName: AppStyles.ThemeNames.t,
-    set: AppStyles.ThemeNames.t => unit,
-  };
-
-  let useTheme = (~auto) =>
+  let useTheme = () =>
     /**
     What we want to do is the following:
     First and foremost the theme is whatever the user sets it to
@@ -74,58 +18,92 @@ module Hooks = {
     {
       open ReactResponsiveRe;
       open Dom.Storage;
+      open AppStyles;
       open AppStyles.ThemeNames;
-      open AppStyles.Theme;
+      open AppStyles.ThemeStore;
+      open DomUtils;
+
+      let canAutoTheme = {
+        let supportsDark =
+          matchMedia("(prefers-color-scheme: dark)")->matches;
+        let supportsLight =
+          matchMedia("(prefers-color-scheme: light)")->matches;
+        let supportsNoPreferences =
+          matchMedia("(prefers-color-scheme: no-preference)")->matches;
+
+        supportsDark || supportsLight || supportsNoPreferences;
+      };
 
       let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-      let systemTheme = prefersDarkMode ? Dark : Light;
 
-      let storedTheme =
-        switch (auto) {
-        | false => localStorage |> getItem("theme")
-        | _ => None
+      let systemTheme =
+        switch (canAutoTheme) {
+        | false => ThemeNames.default
+        | _ => prefersDarkMode ? Dark : Light
         };
 
-      let (themeName, setThemeName) =
-        useState(() =>
-          Option.(
-            storedTheme->flatMap(fromString)->getWithDefault(systemTheme)
-          )
+      let storedTheme = localStorage |> getItem("theme");
+      let initialThemeName =
+        Option.(
+          storedTheme->flatMap(fromString)->getWithDefault(systemTheme)
         );
+
+      let initialState =
+        switch (systemTheme, initialThemeName) {
+        | (Light, Auto) => {theme: Theme.lightTheme, themeName: Auto}
+        | (Dark, Auto) => {theme: Theme.darkTheme, themeName: Auto}
+        | (_, Dark) => {theme: Theme.darkTheme, themeName: Dark}
+        | (_, Light) => {theme: Theme.lightTheme, themeName: Light}
+        | _ => {theme: Theme.default, themeName: default}
+        };
+
+      let (state, dispatch) = store(initialState).useStore();
+      let {themeName} = state;
+
+      useOnMount(() => {
+        switch (initialThemeName) {
+        | Light => dispatch(SwitchToLightTheme)
+        | Dark => dispatch(SwitchToDarkTheme)
+        | Auto => dispatch(SwitchToAutoTheme)
+        };
+        None;
+      });
 
       /**
         If auto is true then this function won't do anything.
         Make auto false to be able to manually change the theme.
        */
       let set = t => {
-        switch (auto) {
-        | false =>
-          setThemeName(_ => {
-            localStorage |> setItem("theme", t->toString);
-            t;
-          })
-        | _ => ()
+        switch (themeName) {
+        | Auto => ()
+        | _ =>
+          switch (t) {
+          | Light => dispatch(SwitchToLightTheme)
+          | Dark => dispatch(SwitchToDarkTheme)
+          | _ => ()
+          };
+          localStorage |> setItem("theme", t->toString);
         };
       };
 
-      let theme =
-        switch (themeName) {
-        | Light => lightTheme
-        | Dark => darkTheme
-        };
-
       useEffect3(
         () => {
-          switch (auto, storedTheme) {
-          | (true, _) => setThemeName(_ => systemTheme)
-          | (_, None) => set(systemTheme)
+          Js.log((
+            themeName->toString,
+            storedTheme->Option.getExn,
+            systemTheme->toString,
+          ));
+          switch (themeName, storedTheme, systemTheme) {
+          | (Auto, _, Light) => dispatch(AutoSwitchToLight)
+          | (Auto, _, Dark) => dispatch(AutoSwitchToDark)
+          | (_, None, _) => set(ThemeNames.default)
           | _ => ()
           };
           None;
         },
-        (auto, storedTheme, prefersDarkMode),
+        (themeName, storedTheme, systemTheme),
       );
 
-      {theme, themeName, set};
+      (state, dispatch);
     };
 };

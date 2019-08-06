@@ -26,7 +26,8 @@
     "@glennsl/bs-jest",
     "reason-graphql-hooks",
     "bs-fetch",
-    "bs-storybook"
+    "bs-storybook",
+    "restorative"
   ],
   "warnings": {
     "error": "+101"

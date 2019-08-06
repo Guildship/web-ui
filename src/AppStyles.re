@@ -231,30 +231,62 @@ module Theme = {
       activeLinkColor: Palette.gsRed5,
     },
   };
+
+  let default = darkTheme;
 };
 
 module ThemeNames = {
   type t =
     | Light
-    | Dark;
+    | Dark
+    | Auto;
+
+  let default = Dark;
 
   let fromString =
     fun
     | "light" => Some(Light)
     | "dark" => Some(Dark)
+    | "auto" => Some(Auto)
     | _ => None;
 
   let toString =
     fun
     | Light => "light"
-    | Dark => "dark";
+    | Dark => "dark"
+    | Auto => "auto";
 };
 
-module ThemeContext = {
-  let themeContext = React.createContext(Theme.lightTheme);
-  let makeProps = (~value, ~children, ()) => {
-    "value": value,
-    "children": children,
+module ThemeStore = {
+  type state = {
+    themeName: ThemeNames.t,
+    theme: Theme.t,
   };
-  let make = React.Context.provider(themeContext);
+
+  type action =
+    | SwitchToDarkTheme
+    | SwitchToLightTheme
+    | SwitchToAutoTheme
+    | AutoSwitchToDark
+    | AutoSwitchToLight;
+
+  let reducer = (state, action) =>
+    switch (action) {
+    | SwitchToDarkTheme => {
+        themeName: ThemeNames.Dark,
+        theme: Theme.darkTheme,
+      }
+    | SwitchToLightTheme => {
+        themeName: ThemeNames.Light,
+        theme: Theme.lightTheme,
+      }
+    | SwitchToAutoTheme => {...state, themeName: ThemeNames.Auto}
+    | AutoSwitchToDark => {themeName: ThemeNames.Auto, theme: Theme.darkTheme}
+    | AutoSwitchToLight => {
+        themeName: ThemeNames.Auto,
+        theme: Theme.lightTheme,
+      }
+    };
+
+  let store = initialState => Restorative.createStore(initialState, reducer);
 };

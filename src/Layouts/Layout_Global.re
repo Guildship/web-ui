@@ -1,8 +1,10 @@
 open ReactUtils;
+open AppStyles.ThemeStore;
+open Hooks;
 
 [@react.component]
 let make = (~children) => {
-  let theme = useContext(AppStyles.ThemeContext.themeContext);
+  let ({theme}, _) = useTheme();
 
   module Styles = {
     open Css;
