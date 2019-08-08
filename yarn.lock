@@ -3202,6 +3202,11 @@ bs-css@^9.0.1:
   dependencies:
     emotion "^10.0.7"
 
+bs-dynamic-import@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/bs-dynamic-import/-/bs-dynamic-import-0.4.0.tgz#73e72d4ab38d68bd448652392b7d99bd72c1b8c6"
+  integrity sha512-8d9O6A87x8dc82cV7a67azs/p+FhRtP78bwcTzpGifSEfb9Oj66rCrVU5zZE7GVJqSBP+XpsgoaEAqlddtI3/g==
+
 bs-fetch@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/bs-fetch/-/bs-fetch-0.5.0.tgz#6913b1d1ddfa0b0a4b832357854e9763d61d4b28"
@@ -9330,7 +9335,17 @@ reason-graphql-hooks@^0.2.1:
     graphql-hooks "^3.6.0"
     graphql-hooks-memcache "^1.2.1"
 
-"reason-react@>= 0.7.0":
+reason-loadable@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/reason-loadable/-/reason-loadable-0.6.2.tgz#4c458d05b3709c3f0e1df5d547583c5062b41420"
+  integrity sha512-hD9XQoJB5hWU18oeSsq9L7p5L2bNrcShlMU05CGzEuwq34BqPFkitqtZigR4lPYX2pnw9PV3Y5ElkbCW1mGbcg==
+  dependencies:
+    bs-dynamic-import "^0.4.0"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+    reason-react "^0.7.0"
+
+"reason-react@>= 0.7.0", reason-react@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.7.0.tgz#46a975c321e81cd51310d7b1a02418ca7667b0d6"
   integrity sha512-czR/f0lY5iyLCki9gwftOFF5Zs40l7ZSFmpGK/Z6hx2jBVeFDmIiXB8bAQW/cO6IvtuEt97OmsYueiuOYG9XjQ==

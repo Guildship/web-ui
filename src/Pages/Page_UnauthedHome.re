@@ -1,16 +1,18 @@
 open ReactUtils;
 open AppStyles;
+open Hooks;
+open ThemeStore;
 
 [@react.component]
 let make = () => {
-  let (state, _) = Hooks.useTheme();
+  let ({theme}, _) = useTheme();
 
   module Styles = {
     open Css;
     open Theme;
 
     let heading =
-      style([lineHeight(state.theme.typography.headingLineHeight->em)]);
+      style([lineHeight(theme.typography.headingLineHeight->em)]);
     let baseTypography = style([margin2(~v=0.5->em, ~h=zero)]);
 
     let h1 =
@@ -18,8 +20,8 @@ let make = () => {
         heading,
         baseTypography,
         style([
-          unsafe("fontSize", state.theme.typography.h1FontSize),
-          fontWeight(`num(state.theme.typography.h1FontWeight)),
+          unsafe("fontSize", theme.typography.h1FontSize),
+          fontWeight(`num(theme.typography.h1FontWeight)),
         ]),
       ]);
   };

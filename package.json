@@ -16,12 +16,14 @@
   "license": "EUPL-1.2",
   "dependencies": {
     "bs-css": "^9.0.1",
+    "bs-dynamic-import": "^0.4.0",
     "bs-fetch": "^0.5.0",
     "polished": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-responsive": "8.0.0-beta.1",
     "reason-graphql-hooks": "^0.2.1",
+    "reason-loadable": "^0.6.2",
     "reason-react": ">= 0.7.0",
     "restorative": "^0.2.1"
   },
