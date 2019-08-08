@@ -2,6 +2,7 @@ open ReactUtils;
 open AppStyles;
 open Hooks;
 open ThemeStore;
+open SharedUiComponents;
 
 [@react.component]
 let make = () => {
@@ -10,6 +11,8 @@ let make = () => {
   module Styles = {
     open Css;
     open Theme;
+
+    let wrapper = style([padding2(~h=1.->rem, ~v=zero)]);
 
     let heading =
       style([lineHeight(theme.typography.headingLineHeight->em)]);
@@ -26,5 +29,8 @@ let make = () => {
       ]);
   };
 
-  <h1 className=Styles.h1> "Guildship"->str </h1>;
+  <div className=Styles.wrapper>
+    <h1 className=Styles.h1> "Guildship"->str </h1>
+    <ThemePicker />
+  </div>;
 };

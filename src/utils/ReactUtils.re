@@ -13,17 +13,6 @@ module Hooks = {
     open AppStyles;
     open AppStyles.ThemeNames;
     open AppStyles.ThemeStore;
-    open DomUtils;
-
-    let canAutoTheme = {
-      let supportsDark = matchMedia("(prefers-color-scheme: dark)")->matches;
-      let supportsLight =
-        matchMedia("(prefers-color-scheme: light)")->matches;
-      let supportsNoPreferences =
-        matchMedia("(prefers-color-scheme: no-preference)")->matches;
-
-      supportsDark || supportsLight || supportsNoPreferences;
-    };
 
     let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
@@ -37,16 +26,7 @@ module Hooks = {
     let initialThemeName =
       Option.(storedTheme->flatMap(fromString)->getWithDefault(systemTheme));
 
-    let initialState =
-      switch (systemTheme, initialThemeName) {
-      | (Light, Auto) => {theme: Theme.lightTheme, themeName: Auto}
-      | (Dark, Auto) => {theme: Theme.darkTheme, themeName: Auto}
-      | (_, Dark) => {theme: Theme.darkTheme, themeName: Dark}
-      | (_, Light) => {theme: Theme.lightTheme, themeName: Light}
-      | _ => {theme: Theme.default, themeName: default}
-      };
-
-    let (state, dispatch) = store(initialState).useStore();
+    let (state, dispatch) = store.useStore();
     let {themeName} = state;
 
     useOnMount(() => {
@@ -59,15 +39,11 @@ module Hooks = {
     });
 
     let set = t => {
-      switch (themeName) {
-      | Auto => ()
-      | _ =>
-        switch (t) {
-        | Light => dispatch(SwitchToLightTheme)
-        | Dark => dispatch(SwitchToDarkTheme)
-        | _ => ()
-        };
-        localStorage |> setItem("theme", t->toString);
+      localStorage |> setItem("theme", t->toString);
+      switch (t) {
+      | Auto => dispatch(SwitchToAutoTheme)
+      | Dark => dispatch(SwitchToDarkTheme)
+      | Light => dispatch(SwitchToLightTheme)
       };
     };
 
@@ -84,6 +60,6 @@ module Hooks = {
       (themeName, storedTheme, systemTheme),
     );
 
-    (state, dispatch);
+    (state, set);
   };
 };
