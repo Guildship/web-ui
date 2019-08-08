@@ -8,10 +8,12 @@ let make = () => {
 
   <Gql.Provider client=Gql.client>
     <Layouts.Global>
-      {switch (url.path) {
-       | [] => <Pages.UnauthedHome />
-       | _ => null
-       }}
+      <React.Suspense fallback=null>
+        {switch (url.path) {
+         | [] => <Pages.UnauthedHome />
+         | _ => null
+         }}
+      </React.Suspense>
     </Layouts.Global>
   </Gql.Provider>;
 };
