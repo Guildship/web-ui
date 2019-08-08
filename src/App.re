@@ -10,7 +10,7 @@ let make = () => {
     <Layouts.Global>
       <React.Suspense fallback=null>
         {switch (url.path) {
-         | [] => <Pages.UnauthedHome />
+         | [] => <Pages.UnauthedHomeLazy.Lazy />
          | _ => null
          }}
       </React.Suspense>

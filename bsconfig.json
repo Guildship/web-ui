@@ -27,7 +27,9 @@
     "reason-graphql-hooks",
     "bs-fetch",
     "bs-storybook",
-    "restorative"
+    "restorative",
+    "bs-dynamic-import",
+    "reason-loadable"
   ],
   "warnings": {
     "error": "+101"

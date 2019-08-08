@@ -31,6 +31,8 @@ let make = () => {
 
   <div className=Styles.wrapper>
     <h1 className=Styles.h1> "Guildship"->str </h1>
-    <ThemePicker />
+    <Suspense fallback=null> <ThemePickerLazy.Lazy /> </Suspense>
   </div>;
 };
+
+let default = make;

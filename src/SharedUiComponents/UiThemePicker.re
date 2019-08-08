@@ -75,3 +75,5 @@ let make = () => {
     </button>
   </div>;
 };
+
+let default = make;
