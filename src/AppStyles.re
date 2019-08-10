@@ -311,6 +311,8 @@ module Theme = {
       cardForegroundColorStr: string,
       cardBorderColor: color,
       cardBorderColorStr: string,
+      paneShadowColor: color,
+      paneShadowColorStr: string,
       baseLinkColor: color,
       baseLinkColorStr: string,
       visitedLinkColor: color,
@@ -348,6 +350,9 @@ module Theme = {
     headingLineHeight: 1.5,
   };
 
+  let paneShadowColor = rgba(0, 0, 0, 0.2);
+  let paneShadowColorStr = "rgba(0, 0, 0, 0.2)";
+
   let darkTheme = {
     typography,
     colors: {
@@ -361,6 +366,8 @@ module Theme = {
       cardForegroundColorStr: Palette.gsGray0Str,
       cardBorderColor: rgba(0, 0, 0, 0.33),
       cardBorderColorStr: "rgba(0, 0, 0, 0.33)",
+      paneShadowColor,
+      paneShadowColorStr,
       baseLinkColor: Palette.gsBlue4,
       baseLinkColorStr: Palette.gsBlue4Str,
       visitedLinkColor: Palette.gsViolet4,
@@ -383,6 +390,8 @@ module Theme = {
       cardBorderColor: rgba(0, 0, 0, 0.15),
       cardBorderColorStr: "rgba(0, 0, 0, 0.15)",
       cardForegroundColorStr: Palette.gsBlackStr,
+      paneShadowColor,
+      paneShadowColorStr,
       baseLinkColor: Palette.gsBlue5,
       baseLinkColorStr: Palette.gsBlue5Str,
       visitedLinkColor: Palette.gsViolet5,
@@ -393,6 +402,13 @@ module Theme = {
   };
 
   let default = darkTheme;
+
+  type elevation =
+    | Elevation0
+    | Elevation1
+    | Elevation2
+    | Elevation3
+    | Elevation4;
 };
 
 module ThemeNames = {
