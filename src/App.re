@@ -12,7 +12,11 @@ let make = () => {
       <React.Suspense fallback=null>
         {switch (url.path) {
          | [] => <Pages.UnauthedHomeLazy.Lazy />
-         | ["me", "settings"] => <Heading level=1> "Howdy!"->str </Heading>
+         | ["me", "settings"] =>
+           <main>
+             <Heading level=1> "Howdy!"->str </Heading>
+             <Router.Link path="/"> "Back to /"->str </Router.Link>
+           </main>
          | _ => <Heading level=1> "Not Found"->str </Heading>
          }}
       </React.Suspense>
