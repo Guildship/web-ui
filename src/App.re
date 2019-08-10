@@ -1,5 +1,6 @@
 open ReactUtils;
 open AppStyles;
+open SharedUiComponents;
 
 [@react.component]
 let make = () => {
@@ -11,7 +12,8 @@ let make = () => {
       <React.Suspense fallback=null>
         {switch (url.path) {
          | [] => <Pages.UnauthedHomeLazy.Lazy />
-         | _ => null
+         | ["me", "settings"] => <Heading level=1> "Howdy!"->str </Heading>
+         | _ => <Heading level=1> "Not Found"->str </Heading>
          }}
       </React.Suspense>
     </Layouts.Global>

@@ -3,6 +3,7 @@ open AppStyles;
 open Hooks;
 open ThemeStore;
 open SharedUiComponents;
+open Router;
 
 [@react.component]
 let make = () => {
@@ -31,6 +32,7 @@ let make = () => {
 
   <div className=Styles.wrapper>
     <h1 className=Styles.h1> "Guildship"->str </h1>
+    <Link path="/me/settings"> "Go to settings"->str </Link>
     <Suspense fallback=null> <ThemePickerLazy.Lazy /> </Suspense>
   </div>;
 };
