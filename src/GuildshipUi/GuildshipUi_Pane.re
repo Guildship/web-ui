@@ -5,7 +5,7 @@ open Theme;
 open ThemeStore;
 
 [@react.component]
-let make = (~elevation, ~className="", ~children=null) => {
+let make = (~elevation=Elevation0, ~className="", ~children=null) => {
   let ({theme}, _) = useTheme();
 
   module Styles = {

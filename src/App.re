@@ -1,6 +1,7 @@
 open ReactUtils;
 open AppStyles;
 open SharedUiComponents;
+open GuildshipUi;
 
 [@react.component]
 let make = () => {
@@ -15,7 +16,9 @@ let make = () => {
          | ["me", "settings"] =>
            <main>
              <Heading level=1> "Howdy!"->str </Heading>
-             <Router.Link path="/"> "Back to /"->str </Router.Link>
+             <Router.Link path="/">
+               <Text> "Back to /"->str </Text>
+             </Router.Link>
            </main>
          | _ => <Heading level=1> "Not Found"->str </Heading>
          }}

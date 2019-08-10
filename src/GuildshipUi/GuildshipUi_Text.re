@@ -55,7 +55,6 @@ let make = (~size=MED, ~children=null) => {
         ~fontWeight=`num(400),
         ~lineHeight=24->px,
         ~letterSpacing=(-0.07)->pxFloat,
-        ~marginTop=28->px,
       );
   };
 
