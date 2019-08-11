@@ -1,7 +1,7 @@
 open ReactUtils;
-open SharedUiComponents;
 open Router;
 open GuildshipUi;
+open AppStyles.Theme;
 
 [@react.component]
 let make = () => {
@@ -13,9 +13,9 @@ let make = () => {
   };
 
   <div className=Styles.wrapper>
-    <Heading level=1> "Guildship"->str </Heading>
+    <Heading size=Heading.S900> "Guildship"->str </Heading>
     <Link path="/me/settings"> <Text> "Go to settings"->str </Text> </Link>
-    <GuildshipUi.Pane className=Styles.pane>
+    <GuildshipUi.Pane elevation=Elevation1 className=Styles.pane>
       <Suspense fallback=null> <ThemePickerLazy.Lazy /> </Suspense>
     </GuildshipUi.Pane>
   </div>;

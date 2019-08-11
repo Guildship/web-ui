@@ -1,6 +1,5 @@
 open ReactUtils;
 open AppStyles;
-open SharedUiComponents;
 open GuildshipUi;
 
 [@react.component]
@@ -15,12 +14,12 @@ let make = () => {
          | [] => <Pages.UnauthedHomeLazy.Lazy />
          | ["me", "settings"] =>
            <main>
-             <Heading level=1> "Howdy!"->str </Heading>
+             <Heading size=Heading.S900> "Howdy!"->str </Heading>
              <Router.Link path="/">
                <Text> "Back to /"->str </Text>
              </Router.Link>
            </main>
-         | _ => <Heading level=1> "Not Found"->str </Heading>
+         | _ => <Heading size=Heading.S900> "Not Found"->str </Heading>
          }}
       </React.Suspense>
     </Layouts.Global>

@@ -1,18 +1,20 @@
 open BsStorybook.Story;
 open StorybookUtils;
-open SharedUiComponents;
 open GuildshipUi;
 open ReactUtils;
 
 storiesOf("Styleguide", _module)
 ->add("Typography", () =>
     <>
-      <Heading level=1> "Heading 1"->str </Heading>
-      <Heading level=2> "Heading 2"->str </Heading>
-      <Heading level=3> "Heading 3"->str </Heading>
-      <Heading level=4> "Heading 4"->str </Heading>
-      <Heading level=5> "Heading 5"->str </Heading>
-      <Heading level=6> "Heading 6"->str </Heading>
+      <Heading size=Heading.S100> "Heading 100"->str </Heading>
+      <Heading size=Heading.S200> "Heading 200"->str </Heading>
+      <Heading size=Heading.S300> "Heading 300"->str </Heading>
+      <Heading size=Heading.S400> "Heading 400"->str </Heading>
+      <Heading size=Heading.S500> "Heading 500"->str </Heading>
+      <Heading size=Heading.S600> "Heading 600"->str </Heading>
+      <Heading size=Heading.S700> "Heading 700"->str </Heading>
+      <Heading size=Heading.S800> "Heading 800"->str </Heading>
+      <Heading size=Heading.S900> "Heading 900"->str </Heading>
       <div>
         <Text size=Text.SM>
           "Text SM: The quick brown fox jumps over the lazy dog"->str

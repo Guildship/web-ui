@@ -1,7 +1,6 @@
 open ReactUtils;
 open BsStorybook.Story;
 open StorybookUtils;
-open SharedUiComponents;
 open GuildshipUi;
 open AppStyles.Theme;
 
