@@ -1,11 +1,9 @@
+open Utils;
 open Webapi;
 
 let isInternalLink = href => {
   let hrefOrigin =
-    switch (Url.make(href)->Url.origin) {
-    | exception _ => None
-    | origin => Some(origin)
-    };
+    Exceptionable.toOption(() => Url.make(href))->Option.map(Url.origin);
 
   let firstCharIsSlash = Js.String.charCodeAt(0, href) == 47.;
   let originIsTheSame =

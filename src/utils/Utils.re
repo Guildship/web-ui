@@ -36,3 +36,18 @@ module DomUtils = {
   [@bs.val] external matchMedia: string => matchMedia = "window.matchMedia";
   [@bs.get] external matches: matchMedia => bool = "matches";
 };
+
+module Exceptionable = {
+  let toOption = a =>
+    switch (a()) {
+    | exception _ => None
+    | v => Some(v)
+    };
+
+  let toResult = a => {
+    switch (a()) {
+    | exception t => Result.Error(t)
+    | v => Result.Ok(v)
+    };
+  };
+};
