@@ -1,3 +1,4 @@
+open Utils;
 open ReactUtils;
 open Hooks;
 open AppStyles;
@@ -5,7 +6,7 @@ open Theme;
 open ThemeStore;
 
 [@react.component]
-let make = (~elevation=Elevation0, ~className="", ~children=null) => {
+let make = (~elevation=?, ~className="", ~children=null) => {
   let ({theme}, _) = useTheme();
 
   module Styles = {
@@ -69,7 +70,10 @@ let make = (~elevation=Elevation0, ~className="", ~children=null) => {
         ])
       };
 
-    let paneWrapper = style([getElevation(elevation)]);
+    let paneWrapper =
+      elevation
+      ->Option.map(el => style([getElevation(el)]))
+      ->Option.getWithDefault("");
   };
 
   <div className={classNames([|Styles.paneWrapper, className|])}>

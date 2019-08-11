@@ -1,6 +1,7 @@
 include React;
 let str = React.string;
-let classNames = (array: array(string)) => Js.Array.joinWith(" ", array);
+let classNames = (array: array(string)) =>
+  Js.Array.joinWith(" ", array)->String.trim;
 
 module Hooks = {
   open Utils;

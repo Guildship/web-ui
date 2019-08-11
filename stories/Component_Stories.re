@@ -13,13 +13,13 @@ storiesOf("Components", _module)
       let container =
         style([
           display(grid),
-          padding(1.5->rem),
           gridAutoRows(120->px),
           unsafe(
             "gridTemplateColumns",
             "repeat(auto-fill, minMax(240px, 1fr))",
           ),
-          gridGap(2.0->rem),
+          gridRowGap(8->px),
+          gridColumnGap(1.->rem),
         ]);
 
       let pane =
@@ -29,22 +29,37 @@ storiesOf("Components", _module)
           alignItems(center),
           flexDirection(column),
         ]);
+
+      let basicPane =
+        style([
+          width(240->px),
+          height(120->px),
+          display(`flex),
+          justifyContent(center),
+          alignItems(center),
+        ]);
     };
-    <div className=Styles.container>
-      <Pane className=Styles.pane elevation=Elevation0>
-        <Text> "Elevation 0"->str </Text>
-      </Pane>
-      <Pane className=Styles.pane elevation=Elevation1>
-        <Text> "Elevation 1"->str </Text>
-      </Pane>
-      <Pane className=Styles.pane elevation=Elevation2>
-        <Text> "Elevation 2"->str </Text>
-      </Pane>
-      <Pane className=Styles.pane elevation=Elevation3>
-        <Text> "Elevation 3"->str </Text>
-      </Pane>
-      <Pane className=Styles.pane elevation=Elevation4>
-        <Text> "Elevation 4"->str </Text>
-      </Pane>
-    </div>;
+
+    <>
+      <Heading> "Pane"->str </Heading>
+      <Pane className=Styles.basicPane> <Text> "Pane"->str </Text> </Pane>
+      <Heading> "Elevation"->str </Heading>
+      <div className=Styles.container>
+        <Pane className=Styles.pane elevation=Elevation0>
+          <Text> "Elevation 0"->str </Text>
+        </Pane>
+        <Pane className=Styles.pane elevation=Elevation1>
+          <Text> "Elevation 1"->str </Text>
+        </Pane>
+        <Pane className=Styles.pane elevation=Elevation2>
+          <Text> "Elevation 2"->str </Text>
+        </Pane>
+        <Pane className=Styles.pane elevation=Elevation3>
+          <Text> "Elevation 3"->str </Text>
+        </Pane>
+        <Pane className=Styles.pane elevation=Elevation4>
+          <Text> "Elevation 4"->str </Text>
+        </Pane>
+      </div>
+    </>;
   });
