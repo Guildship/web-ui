@@ -17,6 +17,7 @@ let make = (~size=MED, ~children=null) => {
 
     let makeStyle = (~fontSize, ~fontWeight, ~lineHeight, ~letterSpacing) =>
       style([
+        fontFamily(theme.typography.uiFontFamily),
         color(theme.colors.baseForegroundColor),
         Css.margin(zero),
         Css.fontSize(fontSize),

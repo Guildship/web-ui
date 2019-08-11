@@ -274,6 +274,10 @@ module Theme = {
 
   module Typography = {
     type t = {
+      // Font Families
+      displayFontFamily: string,
+      uiFontFamily: string,
+      monoFontFamily: string,
       // Font Size (in pixels)
       baseFontSize: string,
       h1FontSize: string,
@@ -330,6 +334,9 @@ module Theme = {
   let baseFontSize = 18;
 
   let typography: Typography.t = {
+    displayFontFamily: {|"SF UI Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"|},
+    uiFontFamily: {|"SF UI Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"|},
+    monoFontFamily: {|"SF Mono", "Monaco", "Inconsolata", "Fira Mono", "Droid Sans Mono", "Source Code Pro", monospace|},
     baseFontSize: ModularScale.get(1),
     h1FontSize: ModularScale.get(7),
     h2FontSize: ModularScale.get(6),

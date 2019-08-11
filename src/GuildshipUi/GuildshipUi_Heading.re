@@ -25,6 +25,19 @@ let make = (~level=?, ~size=S500, ~children) => {
 
     let baseHeadingStyle = style([margin(zero)]);
 
+    let headingFontFamily =
+      switch (_size) {
+      | S100 => theme.typography.uiFontFamily
+      | S200 => theme.typography.uiFontFamily
+      | S300 => theme.typography.uiFontFamily
+      | S400 => theme.typography.uiFontFamily
+      | S500 => theme.typography.uiFontFamily
+      | S600 => theme.typography.displayFontFamily
+      | S700 => theme.typography.displayFontFamily
+      | S800 => theme.typography.displayFontFamily
+      | S900 => theme.typography.displayFontFamily
+      };
+
     let headingFontSize =
       switch (_size) {
       | S100 => 11->px
@@ -83,6 +96,7 @@ let make = (~level=?, ~size=S500, ~children) => {
       merge([
         baseHeadingStyle,
         style([
+          fontFamily(headingFontFamily),
           fontSize(headingFontSize),
           fontWeight(headingFontWeight),
           lineHeight(headingLineHeight),
