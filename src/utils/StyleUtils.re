@@ -4,6 +4,7 @@ open PolishedRe;
 module CssUtils = {
   let numFloat = (num: float) => `num(num);
   let num = (num: int) => `num(num);
+  let unsafeShadow = (shadow: string) => `shadow(shadow);
 };
 
 module Color = {

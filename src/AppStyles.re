@@ -315,6 +315,11 @@ module Theme = {
       cardForegroundColorStr: string,
       cardBorderColor: color,
       cardBorderColorStr: string,
+      buttonDefaultBackgroundColor: color,
+      buttonDefaultGradientShadowColor: color,
+      buttonBorderColor: color,
+      buttonMinimalHoverColor: color,
+      buttonMinimalActiveColor: color,
       paneShadowColor: color,
       paneShadowColorStr: string,
       baseLinkColor: color,
@@ -326,12 +331,19 @@ module Theme = {
     };
   };
 
+  module Sizing = {
+    type t = {borderRadius: int};
+  };
+
   type t = {
+    sizing: Sizing.t,
     typography: Typography.t,
     colors: Colors.t,
   };
 
   let baseFontSize = 18;
+
+  let sizing: Sizing.t = {borderRadius: 3};
 
   let typography: Typography.t = {
     displayFontFamily: {|"SF UI Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"|},
@@ -361,6 +373,7 @@ module Theme = {
   let paneShadowColorStr = "rgba(0, 0, 0, 0.2)";
 
   let darkTheme = {
+    sizing,
     typography,
     colors: {
       baseBackgroundColor: Palette.gsBlack,
@@ -373,6 +386,11 @@ module Theme = {
       cardForegroundColorStr: Palette.gsGray0Str,
       cardBorderColor: rgba(0, 0, 0, 0.33),
       cardBorderColorStr: "rgba(0, 0, 0, 0.33)",
+      buttonDefaultBackgroundColor: Palette.gsGray8,
+      buttonDefaultGradientShadowColor: Palette.gsGray9,
+      buttonBorderColor: rgba(0, 0, 0, 0.2),
+      buttonMinimalHoverColor: Palette.gsGray8,
+      buttonMinimalActiveColor: Palette.gsGray9,
       paneShadowColor,
       paneShadowColorStr,
       baseLinkColor: Palette.gsBlue4,
@@ -385,6 +403,7 @@ module Theme = {
   };
 
   let lightTheme = {
+    sizing,
     typography,
     colors: {
       baseBackgroundColor: Palette.gsGray0,
@@ -397,6 +416,11 @@ module Theme = {
       cardBorderColor: rgba(0, 0, 0, 0.15),
       cardBorderColorStr: "rgba(0, 0, 0, 0.15)",
       cardForegroundColorStr: Palette.gsBlackStr,
+      buttonDefaultBackgroundColor: "fff"->hex,
+      buttonDefaultGradientShadowColor: Palette.gsGray0,
+      buttonBorderColor: rgba(0, 0, 0, 0.1),
+      buttonMinimalHoverColor: Palette.gsGray0,
+      buttonMinimalActiveColor: Palette.gsGray1,
       paneShadowColor,
       paneShadowColorStr,
       baseLinkColor: Palette.gsBlue5,

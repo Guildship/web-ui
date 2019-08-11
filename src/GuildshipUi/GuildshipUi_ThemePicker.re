@@ -18,7 +18,7 @@ let make = () => {
     let wrapper =
       style([
         display(inlineBlock),
-        borderRadius(4->px),
+        borderRadius(theme.sizing.borderRadius->px),
         unsafe(
           "boxShadow",
           {j|0 0 0 1px $cardBorderColorStr, 0 0.25rem 0.25rem rgba(0, 0, 0, 0.05)|j},
@@ -41,11 +41,17 @@ let make = () => {
         ),
         selector(
           ":first-child",
-          [borderTopLeftRadius(4->px), borderBottomLeftRadius(4->px)],
+          [
+            borderTopLeftRadius(theme.sizing.borderRadius->px),
+            borderBottomLeftRadius(theme.sizing.borderRadius->px),
+          ],
         ),
         selector(
           ":last-child",
-          [borderTopRightRadius(4->px), borderBottomRightRadius(4->px)],
+          [
+            borderTopRightRadius(theme.sizing.borderRadius->px),
+            borderBottomRightRadius(theme.sizing.borderRadius->px),
+          ],
         ),
       ]);
   };

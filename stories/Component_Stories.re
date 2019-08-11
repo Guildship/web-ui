@@ -62,4 +62,53 @@ storiesOf("Components", _module)
         </Pane>
       </div>
     </>;
-  });
+  })
+->add("Button", () =>
+    Ux.(
+      <>
+        <Heading> "Basic Button"->str </Heading>
+        <Button appearance=Button.Primary marginRight=16>
+          "Button"->str
+        </Button>
+        <Heading> "Default Buttons"->str </Heading>
+        <Button appearance=Button.Default intent=Intent.None marginRight=16>
+          "None"->str
+        </Button>
+        <Button appearance=Button.Default intent=Intent.Success marginRight=16>
+          "Success"->str
+        </Button>
+        <Button appearance=Button.Default intent=Intent.Warning marginRight=16>
+          "Warning"->str
+        </Button>
+        <Button appearance=Button.Default intent=Intent.Danger marginRight=16>
+          "Danger"->str
+        </Button>
+        <Heading> "Primary Buttons"->str </Heading>
+        <Button appearance=Button.Primary intent=Intent.None marginRight=16>
+          "None"->str
+        </Button>
+        <Button appearance=Button.Primary intent=Intent.Success marginRight=16>
+          "Success"->str
+        </Button>
+        <Button appearance=Button.Primary intent=Intent.Warning marginRight=16>
+          "Warning"->str
+        </Button>
+        <Button appearance=Button.Primary intent=Intent.Danger marginRight=16>
+          "Danger"->str
+        </Button>
+        <Heading> "Minimal Buttons"->str </Heading>
+        <Button appearance=Button.Minimal intent=Intent.None marginRight=16>
+          "None"->str
+        </Button>
+        <Button appearance=Button.Minimal intent=Intent.Success marginRight=16>
+          "Success"->str
+        </Button>
+        <Button appearance=Button.Minimal intent=Intent.Warning marginRight=16>
+          "Warning"->str
+        </Button>
+        <Button appearance=Button.Minimal intent=Intent.Danger marginRight=16>
+          "Danger"->str
+        </Button>
+      </>
+    )
+  );
