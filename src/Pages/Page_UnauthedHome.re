@@ -1,5 +1,4 @@
 open ReactUtils;
-open Router;
 open GuildshipUi;
 open AppStyles.Theme;
 
@@ -14,7 +13,7 @@ let make = () => {
 
   <div className=Styles.wrapper>
     <Heading size=Heading.S900> "Guildship"->str </Heading>
-    <Link path="/me/settings"> <Text> "Go to settings"->str </Text> </Link>
+    <Link href="/me/settings"> <Text> "Go to settings"->str </Text> </Link>
     <GuildshipUi.Pane elevation=Elevation1 className=Styles.pane>
       <Suspense fallback=null> <ThemePickerLazy.Lazy /> </Suspense>
     </GuildshipUi.Pane>

@@ -9,7 +9,7 @@ type size =
   | XL;
 
 [@react.component]
-let make = (~size=MED, ~children=null) => {
+let make = (~size=MED, ~className="", ~children=null) => {
   let ({theme}, _) = useTheme();
 
   module Style = {
@@ -67,5 +67,5 @@ let make = (~size=MED, ~children=null) => {
     | XL => Style.xlStyle
     };
 
-  <span className=textStyle> children </span>;
+  <span className={classNames([|textStyle, className|])}> children </span>;
 };

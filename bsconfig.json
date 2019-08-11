@@ -29,7 +29,8 @@
     "bs-storybook",
     "restorative",
     "bs-dynamic-import",
-    "reason-loadable"
+    "reason-loadable",
+    "bs-webapi"
   ],
   "warnings": {
     "error": "+101"

@@ -3224,6 +3224,11 @@ bs-storybook@^0.3.0:
   dependencies:
     reason-react "^0.5.3"
 
+bs-webapi@^0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/bs-webapi/-/bs-webapi-0.15.2.tgz#0bf4174cffafde748df19c4ae42f6e8e6c6a22b1"
+  integrity sha512-P3YNG9i29FjGxBLN4UkhiQpBwB4ok+xiGK6kCiUixBB/mb/hwnFGPbxAY/Q2owx0/8ehM+BwRT6vFd01T0GRRQ==
+
 bsb-js@^1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/bsb-js/-/bsb-js-1.1.7.tgz#12cc91e974f5896b3a2aa8358419d24e56f552c3"
