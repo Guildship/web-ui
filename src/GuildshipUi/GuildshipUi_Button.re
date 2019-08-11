@@ -12,6 +12,7 @@ type appearance =
 [@react.component]
 let make =
     (
+      ~disabled=false,
       ~intent=Intent.None,
       ~appearance=Default,
       ~children=null,
@@ -157,7 +158,10 @@ let make =
     let buttonStyle = merge([base, appearanceStyle, overrideStyles]);
   };
 
-  <button className={classNames([|Styles.buttonStyle, className|])} onClick>
+  <button
+    disabled
+    className={classNames([|Styles.buttonStyle, className|])}
+    onClick>
     children
   </button>;
 };
