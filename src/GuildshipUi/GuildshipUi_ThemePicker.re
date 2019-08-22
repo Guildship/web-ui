@@ -40,7 +40,7 @@ let make = () => {
           [color(Palette.gsGray0), backgroundColor(Palette.gsBase)],
         ),
         selector(
-          ":first-child",
+          ":first-of-type",
           [
             borderTopLeftRadius(theme.sizing.borderRadius->px),
             borderBottomLeftRadius(theme.sizing.borderRadius->px),

@@ -6,3 +6,4 @@ module ThemePicker = GuildshipUi_ThemePicker;
 module ThemePickerLazy = GuildshipUi_ThemePickerLazy;
 module Link = GuildshipUi_Link;
 module Button = GuildshipUi_Button;
+module Icon = BlueprintRe.Icon;
