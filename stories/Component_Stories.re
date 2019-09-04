@@ -1,7 +1,7 @@
 open ReactUtils;
 open BsStorybook.Story;
 open StorybookUtils;
-open GuildshipUi;
+open GsUi;
 open AppStyles.Theme;
 
 storiesOf("Components", _module)

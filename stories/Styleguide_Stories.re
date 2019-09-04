@@ -1,6 +1,6 @@
 open BsStorybook.Story;
 open StorybookUtils;
-open GuildshipUi;
+open GsUi;
 open ReactUtils;
 
 storiesOf("Styleguide", _module)

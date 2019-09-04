@@ -1,6 +1,6 @@
 open ReactUtils;
 open AppStyles;
-open GuildshipUi;
+open GsUi;
 
 [@react.component]
 let make = () => {
