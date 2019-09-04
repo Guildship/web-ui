@@ -9,7 +9,7 @@
     "bsb:clean": "yarn bsb -clean-world",
     "bsb:make": "yarn bsb -make-world",
     "test": "echo \"lol\" && exit 1",
-    "clean": "rimraf dist lib/* .cache .merlin",
+    "clean": "rimraf dist lib/* .cache .merlin src/**/*.bs.js",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
