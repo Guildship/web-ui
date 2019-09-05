@@ -1,7 +1,7 @@
 open Utils;
 open ReactUtils;
 open AppStyles.ThemeStore;
-open Hooks;
+open CustomHooks;
 open StyleUtils;
 
 type appearance =

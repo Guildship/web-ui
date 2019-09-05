@@ -1,6 +1,5 @@
-open ReactUtils;
 open AppStyles.ThemeStore;
-open Hooks;
+open CustomHooks;
 
 [@react.component]
 let make = (~children) => {
