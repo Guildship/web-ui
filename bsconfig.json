@@ -24,13 +24,13 @@
     "reason-react",
     "bs-css",
     "@glennsl/bs-jest",
-    "reason-graphql-hooks",
     "bs-fetch",
     "bs-storybook",
     "restorative",
     "bs-dynamic-import",
     "reason-loadable",
-    "bs-webapi"
+    "bs-webapi",
+    "reason-urql"
   ],
   "warnings": {
     "error": "+101"

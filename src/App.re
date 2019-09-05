@@ -7,7 +7,7 @@ let make = () => {
   open ThemeNames;
   let url = ReasonReactRouter.useUrl();
 
-  <Gql.Provider client=Gql.client>
+  <Gql.Provider value=Gql.client>
     <Layouts.Global>
       <React.Suspense fallback=null>
         {switch (url.path) {

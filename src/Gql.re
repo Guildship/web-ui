@@ -1,11 +1,4 @@
-open GraphqlHooks;
-include GraphqlHooksTypes;
-
-module Provider = Provider;
+module Provider = ReasonUrql.Provider;
 
 let gqlEndpoint = Env.gsCorePath ++ "/api";
-
-let memCache = Memcache.make();
-let client = Client.make(~url=gqlEndpoint, ~cache=memCache, ());
-
-module Query = GraphqlHooksQuery.Make;
+let client = ReasonUrql.Client.make(~url=gqlEndpoint, ());
