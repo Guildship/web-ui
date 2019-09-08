@@ -19,6 +19,11 @@ let make = () => {
                <Text> "Back to /"->str </Text>
              </Router.Link>
            </main>
+         | ["g"] =>
+           // Redirect on /g
+           ReasonReactRouter.replace("/");
+           null;
+         | ["g", id, ..._] => <Pages.GuildLazy.Lazy id />
          | _ => <Heading size=Heading.S900> "Not Found"->str </Heading>
          }}
       </React.Suspense>

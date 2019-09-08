@@ -4,7 +4,6 @@ module type T = (module type of GsUi_ThemePicker);
 
 module Lazy: T = {
   include (val component);
-  let make =
-    ReLoadable.lazy_(() => DynamicImport.import("./GsUi_ThemePicker.bs.js"));
+  let make = LazyImport.(lazy_(() => import("./GsUi_ThemePicker.bs")));
   let default = make;
 };

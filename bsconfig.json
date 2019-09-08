@@ -28,7 +28,6 @@
     "bs-storybook",
     "restorative",
     "bs-dynamic-import",
-    "reason-loadable",
     "bs-webapi",
     "reason-urql"
   ],
