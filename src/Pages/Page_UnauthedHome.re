@@ -10,7 +10,6 @@ let make = () => {
 
     let wrapper = style([padding2(~h=1.->rem, ~v=zero)]);
     let pane = style([padding(1.0->rem), marginTop(1.0->rem)]);
-    let guildName = style([color(white)]);
     let guilds = style([listStyleType(none), margin(zero), padding(zero)]);
   };
 
@@ -28,7 +27,7 @@ let make = () => {
                    <li key=id>
                      <GsUi.Pane elevation=Elevation0 className=Styles.pane>
                        <GsUi.Heading>
-                         <Link href={j|/g/$id|j} className=Styles.guildName>
+                         <Link href={j|/g/$id|j}>
                            {node##displayName->string}
                          </Link>
                        </GsUi.Heading>
