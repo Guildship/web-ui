@@ -13,4 +13,18 @@ module Queries = {
       }
     |}
   ];
+
+  module GetGuild = [%graphql
+    {|
+      query($id: String!) {
+        node(id: $id) {
+          ...on Guild {
+            id
+            displayName
+            createdAt
+          }
+        }
+      }
+    |}
+  ];
 };
