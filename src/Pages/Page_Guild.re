@@ -18,7 +18,7 @@ let make = (~id) => {
 
   let ({displayName, createdAt}, setState) =
     useState(() => {displayName: "", createdAt: None});
-  let request = Gs.Guilds.Queries.GetGuild.makeWithVariables({"id": id});
+  let request = Gs.Guilds.Queries.GetGuild.make(~id, ());
   let ({response}, _) = useQuery(~request, ());
   let parseRequest = data => {
     switch (data##node) {

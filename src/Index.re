@@ -1,7 +1,11 @@
-open ParcelRe;
-ReactDOMRe.renderToElementWithId(<App />, "root");
+ReactDOMRe.renderToElementWithId(
+  <AppContainer> <App /> </AppContainer>,
+  "root",
+);
 
-switch (Js.Nullable.toOption(parcelModule |> hot)) {
-| Some(h) => h |> accept()
-| _ => ()
-};
+ParcelRe.(
+  switch (Js.Nullable.toOption(parcelModule |> hot)) {
+  | Some(h) => h |> accept()
+  | _ => ()
+  }
+);
