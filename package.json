@@ -18,6 +18,8 @@
     "@blueprintjs/core": "^3.18.0",
     "bs-css": "^9.0.1",
     "bs-dynamic-import": "^0.4.0",
+    "bs-emotion": "^0.1.1",
+    "bs-emotion-ppx": "^0.0.6",
     "bs-fetch": "^0.5.0",
     "bs-webapi": "^0.15.2",
     "polished": "^3.4.1",

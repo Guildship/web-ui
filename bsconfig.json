@@ -22,6 +22,7 @@
   "namespace": true,
   "bs-dependencies": [
     "reason-react",
+    "bs-emotion",
     "bs-css",
     "@glennsl/bs-jest",
     "bs-fetch",
@@ -34,6 +35,6 @@
   "warnings": {
     "error": "+101"
   },
-  "ppx-flags": ["graphql_ppx/ppx"],
+  "ppx-flags": ["graphql_ppx/ppx", "bs-emotion-ppx/ppx"],
   "refmt": 3
 }

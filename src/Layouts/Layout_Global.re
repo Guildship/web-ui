@@ -17,5 +17,5 @@ let make = (~children) => {
       ]);
   };
 
-  <main className=Styles.appContainer> children </main>;
+  <main className=Styles.appContainer> <Navbar /> children </main>;
 };

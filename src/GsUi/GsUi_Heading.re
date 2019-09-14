@@ -1,7 +1,6 @@
 open CustomHooks;
 open AppStyles;
 open ThemeStore;
-open ReactUtils;
 
 type size =
   | S100
@@ -16,7 +15,7 @@ type size =
 
 [@react.component]
 let make = (~className="", ~level=?, ~size=S500, ~children) => {
-  let _size = size;
+  let size_ = size;
   let ({theme}, _) = useTheme();
 
   module Styles = {
@@ -26,7 +25,7 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
     let baseHeadingStyle = style([margin(zero)]);
 
     let headingFontFamily =
-      switch (_size) {
+      switch (size_) {
       | S100 => theme.typography.uiFontFamily
       | S200 => theme.typography.uiFontFamily
       | S300 => theme.typography.uiFontFamily
@@ -39,7 +38,7 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
       };
 
     let headingFontSize =
-      switch (_size) {
+      switch (size_) {
       | S100 => 11->px
       | S200 => 12->px
       | S300 => 12->px
@@ -52,7 +51,7 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
       };
 
     let headingFontWeight =
-      switch (_size) {
+      switch (size_) {
       | S100 => `num(400)
       | S200 => `num(600)
       | S300 => `num(600)
@@ -65,7 +64,7 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
       };
 
     let headingLineHeight =
-      switch (_size) {
+      switch (size_) {
       | S100 => 16->px
       | S200 => 16->px
       | S300 => 16->px
@@ -78,7 +77,7 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
       };
 
     let headingLetterSpacing =
-      switch (_size) {
+      switch (size_) {
       | S100 => 0.->pxFloat
       | S200 => zero
       | S300 => zero
@@ -103,34 +102,17 @@ let make = (~className="", ~level=?, ~size=S500, ~children) => {
           letterSpacing(headingLetterSpacing),
           color(headingColor),
         ]),
+        className,
       ]);
   };
 
   switch (level) {
-  | Some(1) =>
-    <h1 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h1>
-  | Some(2) =>
-    <h2 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h2>
-  | Some(3) =>
-    <h3 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h3>
-  | Some(4) =>
-    <h4 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h4>
-  | Some(5) =>
-    <h5 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h5>
-  | Some(6) =>
-    <h6 className={classNames([|Styles.headingStyle, className|])}>
-      children
-    </h6>
+  | Some(1) => <h1 className=Styles.headingStyle> children </h1>
+  | Some(2) => <h2 className=Styles.headingStyle> children </h2>
+  | Some(3) => <h3 className=Styles.headingStyle> children </h3>
+  | Some(4) => <h4 className=Styles.headingStyle> children </h4>
+  | Some(5) => <h5 className=Styles.headingStyle> children </h5>
+  | Some(6) => <h6 className=Styles.headingStyle> children </h6>
   | _ => <h2 className=Styles.headingStyle> children </h2>
   };
 };
