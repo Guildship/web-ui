@@ -1,4 +1,4 @@
-open Utils;
+open Belt;
 open ReactUtils;
 
 let useOnMount = fn => useEffect1(fn, [||]);

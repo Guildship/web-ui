@@ -468,6 +468,7 @@ module ThemeStore = {
   open Dom.Storage;
   open ThemeNames;
   open Utils;
+  open Belt;
   open DomUtils;
 
   let supportsDark = matchMedia("(prefers-color-scheme: dark)")->matches;

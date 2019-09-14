@@ -1,4 +1,4 @@
-include Belt;
+open Belt;
 
 let noop = () => ();
 let noop1 = _ => ();

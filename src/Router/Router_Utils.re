@@ -1,3 +1,4 @@
+open Belt;
 open Utils;
 open Webapi;
 
@@ -7,7 +8,7 @@ let isInternalLink = href => {
 
   let firstCharIsSlash = Js.String.charCodeAt(0, href) == 47.;
   let originIsTheSame =
-    Utils.Option.(
+    Option.(
       hrefOrigin
       ->map(origin =>
           Js.String.startsWith(origin, Dom.location->Dom.Location.origin)
